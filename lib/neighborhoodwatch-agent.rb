@@ -5,7 +5,7 @@ module NeighborhoodWatch
   module Agent
 
     TIMEOUT = 20
-    SERVER = "beta.neighborhoodwat.ch"
+    SERVER = "neighborhoodwat.ch"
     OK_STATUS = [200, 301, 302]
 
     def self.run
