@@ -1,22 +1,19 @@
-# What does the NEIGHBORHOODWAT.CH agent do?
+## What does the NEIGHBORHOODWAT.CH agent do?
 
-Our agent is a little Ruby program that recieves URL-lists, pings them and reports the results to [NEIGHBORHOODWAT.CH](http://neighborhoodwat.ch/). There we list our user's monitored websites statuses and notify them if something goes wrong.
+Our agent is a little Ruby program that recieves URL-lists, pings them and reports the results to [NEIGHBORHOODWAT.CH][3]. There we list our user's monitored websites statuses and notify them if something goes wrong.
 
-# What do I need to run the agent?
+## What do I need to run the agent?
 
 First of all, what you _don't_ need: root privileges. You do need a Unix server running the following software:
 
 1. Ruby
 2. Ruby Gems
 3. Cron
+4. and a NEIGHBORHOODWAT.CH account
 
-and
+The agent has so far been tested on Ruby 1.8.6 only but should work on 1.9, too.
 
-4. a NEIGHBORHOODWAT.CH account
-
-The agent has sofar been tested on Ruby 1.8.6 only but should work on 1.9, too.
-
-# You got me convinced. How do I install the agent?
+## You got me convinced. How do I install the agent?
 
 Installing the agent is easy and takes just about 2 minutes.
 
@@ -28,7 +25,7 @@ Start out by installing the NEIGHBORHOODWAT.CH agent gem.
 
     $ sudo gem install mutle-neighborhoodwatch-agent --source=http://gems.github.com/
 
-Before you continue, make sure you have an ID for your agent. He needs this ID to report to the neighborhood watch. To get an ID sign into your NEIGHBORHOODWAT.CH account. Go to your [dashboard][1], click the button "Add an agent" and name him. Now, click "Add agent" and the new agent will apear in the list above. Right beneath the agent name you'll a link "Instructions". Click it and you'll open a modal containing your agent's ID. Copy it.
+Before continuing, make sure you have an ID for your agent. He needs this ID to report to the neighborhood watch. To get an ID sign into your NEIGHBORHOODWAT.CH account. Go to your [dashboard][1], click the button "Add an agent" and name him. Now, click "Add agent" and the new agent will apear in the list above. Right beneath the agent name you'll a link "Instructions". Click it and you'll open a modal containing your agent's ID. Copy it.
 
 Now that you have an agent ID, give it to your agent.
 
@@ -52,3 +49,4 @@ If you have any other issues, please contact us on Twitter [thehoodwatch](https:
 
 [1]: http://neighborhoodwat.ch/dashboard (NEIGHBORHOODWAT.CH dashboard)
 [2]: http://www.mostlygeek.com/tech-reference/crontab-reference/ (Mostly Geek: Crontab reference)
+[3]: http://neighborhoodwat.ch/ (Free social website monitoring for you - NEIGHBORHOODWAT.CH)
