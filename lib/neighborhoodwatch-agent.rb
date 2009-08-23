@@ -6,6 +6,7 @@ module NeighborhoodWatch
 
     TIMEOUT = 20
     SERVER = "beta.neighborhoodwat.ch"
+    OK_STATUS = [200, 301, 302]
 
     def self.run
        EventMachine.run {
@@ -34,6 +35,7 @@ module NeighborhoodWatch
 
         multi = EventMachine::MultiRequest.new
         site_requests = []
+        puts sites.inspect
         sites.each do |site|
           req = EventMachine::HttpRequest.new(site['url']).get(:timeout => TIMEOUT)
           multi.add(req); site_requests << req
@@ -42,7 +44,7 @@ module NeighborhoodWatch
           status = {}
           multi.responses[:succeeded].each do |resp|
             site = sites[site_requests.index(resp)]
-            if resp.response_header.status == 200
+            if OK_STATUS.include?(resp.response_header.status)
               status[site['id']] = "up"
             else
               status[site['id']] = "error-#{resp.response_header.status}"
