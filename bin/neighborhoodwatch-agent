@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'neighborhoodwatch-agent'
+
+CLIENT_ID = ARGV[0] || "unknown"
+NeighborhoodWatch::Agent.run
