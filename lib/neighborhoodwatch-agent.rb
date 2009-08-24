@@ -35,7 +35,7 @@ module NeighborhoodWatch
 
         multi = EventMachine::MultiRequest.new
         site_requests = []
-        puts sites.inspect
+        // puts sites.inspect
         sites.each do |site|
           req = EventMachine::HttpRequest.new(site['url']).get(:timeout => TIMEOUT)
           multi.add(req); site_requests << req
