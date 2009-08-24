@@ -1,5 +1,6 @@
 require 'em-http'
 require 'json'
+require 'uri'
 
 module NeighborhoodWatch
   module Agent
@@ -35,13 +36,20 @@ module NeighborhoodWatch
 
         multi = EventMachine::MultiRequest.new
         site_requests = []
-        // puts sites.inspect
+        status = {}
+        puts sites.inspect
         sites.each do |site|
-          req = EventMachine::HttpRequest.new(site['url']).get(:timeout => TIMEOUT)
-          multi.add(req); site_requests << req
+          begin
+            next if !site || !site['url']
+            uri = URI.parse(site['url'])
+            uri.path = '/' if uri.path == ''
+            req = EventMachine::HttpRequest.new(uri.to_s).get(:timeout => TIMEOUT)
+            multi.add(req); site_requests << req
+          rescue StandardError
+            status[site['id']] = "down"
+          end
         end
         multi.callback  {
-          status = {}
           multi.responses[:succeeded].each do |resp|
             site = sites[site_requests.index(resp)]
             if OK_STATUS.include?(resp.response_header.status)
