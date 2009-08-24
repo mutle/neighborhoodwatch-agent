@@ -37,7 +37,6 @@ module NeighborhoodWatch
         multi = EventMachine::MultiRequest.new
         site_requests = []
         status = {}
-        puts sites.inspect
         sites.each do |site|
           begin
             next if !site || !site['url']
